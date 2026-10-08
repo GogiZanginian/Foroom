@@ -19,11 +19,6 @@ object ProfilePage {
         Matchers.allOf(withId(com.alternator.foroom.R.id.signOutItem))
     }
 
-    val createdChatsItem: Matcher<View> by lazy {
-        Matchers.allOf(withId(com.alternator.foroom.R.id.createdChatsItem))
-    }
-
-
     val changeToGeoBtn: Matcher<View> by lazy {
         Matchers.allOf(withId(com.alternator.foroom.R.id.languageButtonGeo))
     }

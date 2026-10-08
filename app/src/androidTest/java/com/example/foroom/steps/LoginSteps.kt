@@ -13,6 +13,7 @@ class LoginSteps {
     fun enterUsername(username: String): LoginSteps {
         with(LoginPage) {
             usernameInput.typeText(username)
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this
     }
@@ -20,6 +21,7 @@ class LoginSteps {
     fun enterPassword(password: String): LoginSteps {
         with(LoginPage) {
             passwordInput.typeText(password)
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this
     }

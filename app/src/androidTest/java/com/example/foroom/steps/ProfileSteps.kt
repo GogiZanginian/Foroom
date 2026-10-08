@@ -55,4 +55,11 @@ class ProfileSteps {
         }
         return this
     }
+
+    fun logout(): ProfileSteps {
+        with(ProfilePage) {
+            signOutItem.tap()
+        }
+        return this
+    }
 }

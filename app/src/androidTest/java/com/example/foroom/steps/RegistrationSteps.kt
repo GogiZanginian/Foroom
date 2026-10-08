@@ -5,6 +5,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import com.example.design_system.components.image_chooser.ImageChooserListView
@@ -19,6 +20,7 @@ class RegistrationSteps {
     fun enterUsername(username: String): RegistrationSteps {
         with(RegistrationPage) {
             usernameInput.typeText(username)
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this;
     }
@@ -26,6 +28,7 @@ class RegistrationSteps {
     fun enterPassword(password: String): RegistrationSteps {
         with(RegistrationPage) {
             passwordInput.typeText(password)
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this;
     }
@@ -33,13 +36,14 @@ class RegistrationSteps {
     fun enterRepeatPassword(password: String): RegistrationSteps {
         with(RegistrationPage) {
             repeatPasswordInput.typeText(password)
+            onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this;
     }
 
     fun clickOnSignUp(): RegistrationSteps {
         with(RegistrationPage) {
-            onView(isRoot()).perform(ViewActions.closeSoftKeyboard())
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
             signUpBtn.tap()
         }
         return this;

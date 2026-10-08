@@ -4,6 +4,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -26,7 +27,6 @@ class ChatsSteps {
     fun selectChatImage(index: Int): ChatsSteps {
         onView(CreateChatPage.imageChooserItem(index))
             .perform(click())
-
         return this
     }
 
@@ -56,7 +56,9 @@ class ChatsSteps {
 
     fun searchChat(chatName: String): ChatsSteps {
         with(ChatsPage) {
+            onView(searchChatInput).perform(clearText())
             searchChatInput.typeText(chatName)
+            onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
         }
         return this
     }
@@ -71,6 +73,13 @@ class ChatsSteps {
                 )
             ).check(matches(isDisplayed()))
 
+        }
+        return this
+    }
+
+    fun openChat(chatName: String): ChatsSteps {
+        with(ChatsPage) {
+            clickOpenChat(chatName)
         }
         return this
     }
